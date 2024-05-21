@@ -1,0 +1,52 @@
+.header {
+    background-color: #a67e2c;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+}
+
+.title,
+.user_info {
+    font-size: 1rem;
+}
+
+.user_info_wrapper {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    right: 10px;
+    top: 5px;
+}
+
+.user_name {
+    font-weight: 700;
+}
+
+.logout {
+    background-color: #000000;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: 300ms;
+    animation-timing-function: ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    .user_info_wrapper {
+        top: 10px;
+    }
+}
