@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./login.module.css";
+import { useAuth } from "../../context/AuthContext";
+import Loader from "../../components/Loader/Loader";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axios.post("http://localhost:5000/api/users/login", {
@@ -18,12 +24,13 @@ const Login: React.FC = () => {
         password,
       });
 
-      localStorage.setItem("token", response.data.token);
+      login(response.data.token);
       setError("");
-      navigate('/dashboard')
-
+      navigate("/dashboard");
+      setLoading(false);
       // alert("Login bem-sucedido!");
     } catch (err) {
+      setLoading(false);
       setError("Erro ao fazer login. Verifique suas credenciais.");
     }
   };
@@ -55,13 +62,17 @@ const Login: React.FC = () => {
             />
           </div>
 
-          {error && <p className={styles.error} style={{ color: "red" }}>{error}</p>}
+          {error && (
+            <p className={styles.error} style={{ color: "red" }}>
+              {error}
+            </p>
+          )}
 
           <button className={styles.login_button} type="submit">
-            Entrar
+            {loading ? <Loader /> : "Entrar"}
           </button>
 
-          <button className={styles.login_button} onClick={() => navigate('/signup')}>
+          <button className={styles.login_button} onClick={() => navigate("/signup")}>
             Criar conta
           </button>
         </div>

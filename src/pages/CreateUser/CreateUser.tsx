@@ -2,24 +2,30 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./CreateUser.module.css";
+import Loader from "../../components/Loader/Loader";
 
 const CreateUse: React.FC = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       // Substitua 'http://localhost:5000' pela URL do seu servidor
       await axios.post("http://localhost:5000/api/users", { username, email, password });
 
       setError("");
+      setLoading(false);
       navigate("/login");
     } catch (error) {
+      setLoading(false);
       console.error("Erro ao cadastrar usuário:", error);
       setError("Erro ao cadastrar usuário. Por favor, tente novamente.");
       alert("Erro ao cadastrar usuário. Por favor, tente novamente.");
@@ -71,7 +77,10 @@ const CreateUse: React.FC = () => {
           )}
 
           <button className={styles.login_button} type="submit">
-            Cadastrar
+            {loading ? <Loader /> : "Cadastrar"}
+          </button>
+          <button className={styles.login_button} onClick={() => navigate("/login")}>
+            Voltar
           </button>
         </div>
       </form>
