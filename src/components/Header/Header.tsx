@@ -32,12 +32,14 @@ const Header = () => {
     navigate("/login");
   };
 
+  console.log({isAuthenticated})
+
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>Insights Iot</h1>
       {isAuthenticated && (
         <div className={styles.user_info_wrapper}>
-          <div>
+          <div className={styles.welcome}>
             <p className={styles.user_info}>
               bem vindo! <br />
               <span className={styles.user_name}>{user?.username}</span>
