@@ -3,7 +3,7 @@ import React from "react";
 // import { Container } from './styles';
 
 const Dashboard: React.FC = () => {
-  return <div>ta na home</div>;
+  return <div><img src="../wip.gif" alt="" /></div>;
 };
 
 export default Dashboard;
