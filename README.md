@@ -1,4 +1,4 @@
-# Projeto de API de Login
+# Projeto insights-iot
 
 ## Descrição
 Este projeto é uma iterface com um fluxo de criação de usuario login e logout.
@@ -8,7 +8,6 @@ Este projeto é uma iterface com um fluxo de criação de usuario login e logout
 - [Configuração](#configuração)
 - [Uso](#uso)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Rotas](#rotas)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
