@@ -1,0 +1,10 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: frontend
+    ports:
+      - "80:80"
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
